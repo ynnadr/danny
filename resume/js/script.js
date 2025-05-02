@@ -127,8 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const SIDEBAR_WIDTH_RATIO = 0.33; // Proporsi lebar sidebar (sesuaikan dengan CSS)
     const PDF_MARGIN_INCHES = 0.5; // Margin di semua sisi PDF (inci)
     // Ukuran target QR code di PDF (inci) - Sesuaikan nilai ini jika perlu
-    const QR_WIDTH_INCHES = 1.5; // Lebih besar
-    const QR_HEIGHT_INCHES = 1.5; // Jaga tetap sama agar square
+    const QR_WIDTH_INCHES = 1.7; // Lebih besar
+    const QR_HEIGHT_INCHES = 1.7; // Jaga tetap sama agar square
 
     // Pastikan semua elemen yang diperlukan ada sebelum menambahkan event listener
     if (generatePdfBtn && elementToCapture && qrImageElement && downloadLinkContainer) {
