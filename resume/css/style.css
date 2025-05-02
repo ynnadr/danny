@@ -239,6 +239,50 @@ a:hover {
     margin-bottom: 3px;
 }
 
+
+/* Styling untuk Tombol/Link Download PDF */
+.download-pdf-section {
+    margin-top: 25px; /* Jarak dari section Mentorship */
+    margin-bottom: 20px; /* Jarak ke bawah jika ada */
+    text-align: center;
+}
+
+.download-button {
+    display: inline-block;
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.download-button:hover {
+    background-color: #2980b9;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.download-button i {
+    margin-right: 8px;
+    font-style: normal;
+}
+.icon-download::before {
+    content: '📄'; /* Atau ikon lain */
+}
+
+/* Pastikan QR code image tersembunyi di HTML */
+#qrCodeForPdf {
+    display: none;
+}
+
+
+
+
+
 /* Responsive Design */
 @media (max-width: 900px) {
     .resume-container {
