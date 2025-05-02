@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<!-- Set default language -->
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Judul akan diatur oleh JS -->
     <title data-translate="resume_page_title">Resume</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Bisa tambahkan link Font Awesome jika ingin icon -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
 </head>
 <body>
     <div class="language-switcher">
@@ -25,14 +21,12 @@
                  <h2 data-translate="contact_title">Kontak</h2>
                  <p><i class="icon icon-phone"></i>+62 82113131149</p>
                  <p><i class="icon icon-email"></i><a href="mailto:ynnadr@gmail.com" class="sidebar-link">ynnadr@gmail.com</a></p>
-                 <!-- Tambahkan LinkedIn, Portfolio jika ada -->
-                 <!-- <p><i class="icon icon-linkedin"></i><a href="#" class="sidebar-link" data-translate="linkedin_profile">Profil LinkedIn</a></p> -->
             </section>
 
             <section class="skills-section">
                 <h2 data-translate="skills_title">Keahlian</h2>
-
-                <h4 data-translate="skill_group_management">Manajemen & Strategi</h4>
+                <!-- ... (isi skill groups) ... -->
+                 <h4 data-translate="skill_group_management">Manajemen & Strategi</h4>
                 <ul>
                     <li data-translate="skill_pm">Project Management (MS Project, Agile, Waterfall)</li>
                     <li data-translate="skill_leadership">Team Leadership</li>
@@ -97,11 +91,22 @@
                      <span data-translate="mentor_org_2">Google StartUp</span> | <span data-translate="mentor_period_2">2019</span>
                  </p>
             </section>
+
+            <!-- Tombol Download PDF Dipindahkan ke Sini -->
+            <div id="download-pdf-link-container" class="download-pdf-section">
+                <a href="#" id="generate-pdf-btn" class="download-button"> <!-- Beri ID pada link/tombol -->
+                    <i class="icon icon-download"></i>
+                    <span data-translate="download_pdf_button">Unduh PDF</span>
+                </a>
+            </div>
+            <!-- Akhir Tombol Download PDF -->
+
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
-            <section class="summary">
+            <!-- ... (section summary & work-experience seperti sebelumnya) ... -->
+             <section class="summary">
                 <h2 data-translate="summary_title">Ringkasan Profesional</h2>
                 <p data-translate="summary_p1">
                     Profesional IT Senior dengan pengalaman lebih dari 25 tahun dalam memimpin transformasi digital, mengelola proyek kompleks, memastikan kualitas dan keamanan sistem (ISO27001), serta mengelola operasional data center di berbagai industri termasuk perbankan, konstruksi, travel, dan sektor publik.
@@ -113,10 +118,8 @@
 
             <section class="work-experience">
                 <h2 data-translate="experience_title">Pengalaman Kerja</h2>
-
                  <article class="experience-item">
                     <h3 data-translate="job_title_webdev_freelance1">Web Application Developer (Freelance Project)</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_tesola">Tesola Indonesia</span> |
                         <span data-translate="job_period_tesola">2024 – 2025</span>
@@ -127,10 +130,9 @@
                         <li data-translate="job_desc_tesola_3">Status: Prototipe.</li>
                     </ul>
                 </article>
-
-                <article class="experience-item">
+                <!-- ... (Sisa experience items) ... -->
+                 <article class="experience-item">
                     <h3 data-translate="job_title_infosys_dev">Information System Developer (Freelance Project)</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_pami">PAMI Semarang and Salatiga</span> |
                         <span data-translate="job_period_pami">2023 – 2024</span>
@@ -140,11 +142,9 @@
                         <li data-translate="job_desc_pami_2">Merancang dan membangun sistem informasi untuk mendukung penyelenggaraan kejuaraan atletik, meliputi registrasi peserta, penjadwalan, manajemen hasil, dan diseminasi informasi.</li>
                     </ul>
                 </article>
-
                 <article class="experience-item">
                     <h3 data-translate="job_title_it_manager_aspekindo">IT Manager | Sustainable Business Development Team</h3>
-                    <!-- Struktur H4 Diperbaiki -->
-                    <h4>
+                     <h4>
                         <span data-translate="job_company_aspekindo">Asosiasi Pengusaha Konstruksi Indonesia (ASPEKINDO)</span> |
                         <span data-translate="job_period_aspekindo">2019 – 2022</span>
                     </h4>
@@ -153,10 +153,8 @@
                         <li data-translate="job_desc_aspekindo_2">Meningkatkan efisiensi operasional tim IT dengan mengimplementasikan sistem baru untuk proses sertifikasi profesi.</li>
                     </ul>
                 </article>
-
                 <article class="experience-item">
                     <h3 data-translate="job_title_iso_consultant_1">ISO27001 Implementation Consultant</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_sprint">PT. Sucofindo Prima Internasional Konsultan (SPRINT)</span> |
                         <span data-translate="job_period_sprint_1">2018</span>
@@ -167,10 +165,8 @@
                         <li data-translate="job_desc_sprint_1_3">Berhasil memandu klien meraih sertifikasi ISO27001 dalam waktu 4 bulan.</li>
                     </ul>
                 </article>
-
                 <article class="experience-item">
                     <h3 data-translate="job_title_program_manager">Program Manager</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_indocorp">PT. Indo Corpora Investama</span> |
                         <span data-translate="job_period_indocorp">2017</span>
@@ -180,10 +176,8 @@
                         <li data-translate="job_desc_indocorp_2">Merencanakan dan mengelola program pengembangan platform digital, termasuk koordinasi tim lintas fungsi dan manajemen anggaran.</li>
                     </ul>
                 </article>
-
                 <article class="experience-item">
                     <h3 data-translate="job_title_coo">Chief Operating Officer</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_jaganti">PT. Jaganti Nusantara Travel</span> |
                         <span data-translate="job_period_jaganti">2016 – 2017</span>
@@ -192,10 +186,8 @@
                         <li data-translate="job_desc_jaganti_1">Mengelola keseluruhan operasional perusahaan, mencakup sistem IT, pengembangan produk, layanan pelanggan, dan keuangan.</li>
                     </ul>
                 </article>
-
                 <article class="experience-item">
                     <h3 data-translate="job_title_iso_consultant_2">ISO27001 Implementation Consultant</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_sprint">PT. Sucofindo Prima Internasional Konsultan (SPRINT)</span> |
                         <span data-translate="job_period_sprint_2">2016</span>
@@ -205,10 +197,8 @@
                         <li data-translate="job_desc_sprint_2_2">Melakukan analisis kebutuhan keamanan informasi, mengembangkan kebijakan dan prosedur ISO27001, serta memberikan panduan implementasi.</li>
                     </ul>
                 </article>
-
                  <article class="experience-item">
                     <h3 data-translate="job_title_supervision_consultant">Supervision Consultant | Data Center Development and Migration</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_gps">PT. Global Piranti Solusi</span> |
                         <span data-translate="job_period_gps">2015</span>
@@ -218,10 +208,8 @@
                         <li data-translate="job_desc_gps_2">Mengawasi kualitas konstruksi pusat data baru dan proses migrasi data, memastikan kepatuhan terhadap standar keamanan.</li>
                     </ul>
                 </article>
-
                 <article class="experience-item">
                     <h3 data-translate="job_title_sys_analyst">System & Business Analyst</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_lunar">PT. Lunar Multindo Infokom</span> |
                         <span data-translate="job_period_lunar">2014</span>
@@ -231,10 +219,8 @@
                         <li data-translate="job_desc_lunar_2">Menganalisis kebutuhan bisnis untuk pengembangan aplikasi web dan mobile respons bencana, menyusun spesifikasi fungsional dan teknis.</li>
                     </ul>
                 </article>
-
                  <article class="experience-item">
                     <h3 data-translate="job_title_qa_head">IT Quality Assurance / Head of IT Change Management</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_sigma">Telkom Sigma</span> |
                         <span data-translate="job_period_sigma">2008 – 2013</span>
@@ -244,10 +230,8 @@
                         <li data-translate="job_desc_sigma_2">Meningkatkan efektivitas proses QA.</li>
                     </ul>
                 </article>
-
                  <article class="experience-item">
                     <h3 data-translate="job_title_qm_change">IT Quality Management / Change Management</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_lima_pilar">PT. Lima Pilar Teknologi</span> |
                         <span data-translate="job_period_lima_pilar">2007 – 2008</span>
@@ -257,10 +241,8 @@
                         <li data-translate="job_desc_lima_pilar_2">Mengimplementasikan proses QA untuk proyek pengembangan sistem perbankan dan mengelola perubahan sistem.</li>
                     </ul>
                 </article>
-
                  <article class="experience-item">
                     <h3 data-translate="job_title_pm_waysase">Project Manager</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_waysase">PT. Waysase Ciptapadu</span> |
                         <span data-translate="job_period_waysase">2006 – 2007</span>
@@ -272,10 +254,8 @@
                          <li data-translate="job_desc_waysase_4">Implementasi Sistem Manajemen Aset Tetap di Bank Danamon.</li>
                      </ul>
                  </article>
-
                  <article class="experience-item">
                     <h3 data-translate="job_title_pm_urban">Project Manager</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_urban">The Urban Institute, Washington (Jakarta Office)</span> |
                         <span data-translate="job_period_urban">2004 – 2005</span>
@@ -285,10 +265,8 @@
                          <li data-translate="job_desc_urban_2">Mengelola proyek pengembangan sistem IT untuk pemerintah daerah.</li>
                      </ul>
                  </article>
-
                  <article class="experience-item">
                     <h3 data-translate="job_title_it_manager_prima">IT Manager</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_prima">PT. Prima Cipta Dinamika</span> |
                         <span data-translate="job_period_prima">2002 – 2004</span>
@@ -299,10 +277,8 @@
                          <li data-translate="job_desc_prima_3">Implementasi akses internet IP-VSAT.</li>
                      </ul>
                  </article>
-
                  <article class="experience-item">
                     <h3 data-translate="job_title_it_manager_cita">IT Manager</h3>
-                    <!-- Struktur H4 Diperbaiki -->
                     <h4>
                         <span data-translate="job_company_cita">PT. Cita Matriks Semesta</span> |
                         <span data-translate="job_period_cita">1996 – 2002</span>
@@ -311,19 +287,24 @@
                          <li data-translate="job_desc_cita_1">Mengelola sistem IT perusahaan, dukungan teknis, dan pengembangan aplikasi internal.</li>
                      </ul>
                  </article>
-
             </section>
         </main>
     </div>
-<footer class="mobile-footer">
+
+    <!-- Gambar QR Code Tersembunyi untuk PDF -->
+    <!-- PASTIKAN path ini benar -->
+    <img id="qrCodeForPdf" src="images/danny_QR.png" alt="QR Code" style="display: none;">
+
+    <footer class="mobile-footer">
+        <!-- ... (isi footer mobile) ... -->
         <p><strong>Raden Danny Ramadhan, S.Kom</strong></p>
         <p><i class="icon icon-phone"></i> +62 82113131149</p>
         <p><i class="icon icon-email"></i> <a href="mailto:ynnadr@gmail.com">ynnadr@gmail.com</a></p>
-        <!-- <p><i class="icon icon-linkedin"></i> <a href="#">LinkedIn</a></p> -->
     </footer>
 
-    <!-- Load JavaScript -->
+    <!-- Load JavaScript Libraries & Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="js/script.js"></script>
-
 </body>
 </html>
