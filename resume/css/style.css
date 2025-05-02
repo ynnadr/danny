@@ -282,3 +282,116 @@ a:hover {
 .icon-phone::before { content: '📞'; /* Or use font awesome class */ }
 .icon-email::before { content: '✉️'; /* Or use font awesome class */ }
 .icon-linkedin::before { content: '🔗'; /* Or use font awesome class */ }
+
+/* ... (CSS Anda yang sudah ada) ... */
+
+/* === Experience Section === */
+.experience-section {
+    background-color: var(--bg-color); /* Atau sedikit beda jika mau, misal #222 */
+    border-top: 1px solid var(--border-color); /* Pemisah antar section */
+}
+
+.experience-timeline {
+    position: relative;
+    margin-top: 30px;
+    padding-left: 40px; /* Ruang untuk garis timeline dan titik */
+}
+
+/* Garis Vertikal Timeline */
+.experience-timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px; /* Posisi garis */
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background-color: var(--border-color); /* Warna garis */
+}
+
+.experience-item {
+    position: relative;
+    margin-bottom: 40px; /* Jarak antar item pengalaman */
+}
+
+.experience-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Titik pada Timeline */
+.experience-dot {
+    position: absolute;
+    left: -27px; /* Sejajarkan dengan garis timeline */
+    top: 8px;   /* Sesuaikan posisi vertikal titik */
+    width: 12px;
+    height: 12px;
+    background-color: var(--accent-color); /* Warna titik */
+    border-radius: 50%;
+    border: 2px solid var(--bg-color); /* Border agar terlihat 'terpisah' dari garis */
+    z-index: 1;
+}
+
+.experience-content {
+    /* Konten di sebelah kanan garis */
+}
+
+.experience-content h3 {
+    margin-bottom: 0.3em;
+    color: var(--heading-color);
+}
+
+.experience-content h4 {
+    font-size: 1rem;
+    color: var(--accent-color); /* Warna lebih redup untuk perusahaan & tahun */
+    font-weight: 400; /* Tidak terlalu tebal */
+    margin-bottom: 0.8em;
+}
+
+.experience-years {
+    /* Bisa ditambahkan gaya spesifik jika perlu */
+    /* display: block; */ /* Jika ingin tahun di baris baru */
+}
+
+.experience-content p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 0; /* Hapus margin bawah paragraf terakhir item */
+}
+
+/* Penyesuaian Responsif untuk Timeline */
+@media (max-width: 768px) {
+    .experience-timeline {
+        padding-left: 30px;
+    }
+    .experience-timeline::before {
+        left: 10px;
+    }
+    .experience-dot {
+        left: -20px; /* Sesuaikan posisi titik */
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+     .experience-timeline {
+        padding-left: 25px;
+    }
+     .experience-timeline::before {
+        left: 8px;
+    }
+     .experience-dot {
+        left: -18px; /* Sesuaikan posisi titik */
+    }
+     .experience-content h3 {
+         font-size: 1.2rem;
+     }
+     .experience-content h4 {
+         font-size: 0.9rem;
+     }
+      .experience-content p {
+         font-size: 0.9rem;
+     }
+}
+
+
+/* ... (Sisa CSS Anda) ... */
