@@ -1,304 +1,100 @@
 <!DOCTYPE html>
+<!-- Set default language -->
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - Raden Danny Ramadhan, S.Kom</title>
-    <style>
-        /* Reset & Basic Styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f7fc; /* Softer background */
-            color: #333;
-            font-size: 16px;
-        }
-
-        /* Container & Layout */
-        .resume-container {
-            display: flex;
-            max-width: 1200px;
-            margin: 30px auto;
-            background-color: #ffffff;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden; /* Ensures border-radius applies to children */
-        }
-
-        .sidebar {
-            flex: 0 0 33%; /* Sidebar width */
-            background-color: #2c3e50; /* Darker sidebar */
-            color: #ecf0f1; /* Light text on dark background */
-            padding: 30px 25px;
-        }
-
-        .main-content {
-            flex: 1; /* Takes remaining space */
-            padding: 30px 35px;
-        }
-
-        /* Typography & Elements */
-        h1, h2, h3, h4 {
-            margin-bottom: 0.75em;
-            color: #1a252f; /* Darker heading color */
-        }
-
-        h1 {
-            font-size: 2.2em;
-            color: #ecf0f1; /* Name color on sidebar */
-            border-bottom: 2px solid #3498db; /* Accent color */
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .sidebar h2 {
-             color: #3498db; /* Accent color for sidebar headings */
-             font-size: 1.4em;
-             margin-top: 25px;
-             border-bottom: 1px solid #34495e;
-             padding-bottom: 5px;
-        }
-
-        .main-content h2 {
-            color: #2c3e50;
-            font-size: 1.6em;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 8px;
-             margin-bottom: 25px;
-        }
-
-        h3 {
-            font-size: 1.2em;
-            color: #34495e; /* Slightly muted heading */
-            margin-top: 20px;
-        }
-
-        h4 {
-             font-size: 1em;
-             color: #7f8c8d; /* Lighter color for sub-info */
-             font-weight: normal;
-             margin-bottom: 5px; /* Reduced margin */
-             margin-top: -10px; /* Pull up closer to H3 */
-        }
-
-        p, li {
-            margin-bottom: 0.6em;
-            color: #555; /* Standard text color */
-        }
-
-        ul {
-            list-style: none; /* Remove default bullets */
-            padding-left: 0; /* Remove default padding */
-        }
-        
-        .main-content ul {
-             padding-left: 20px; /* Indent bullets in main content */
-             list-style: disc; /* Use standard bullets here */
-        }
-
-        .main-content ul li {
-             margin-bottom: 8px;
-        }
-        
-        .sidebar ul li {
-            margin-bottom: 8px;
-        }
-        
-         .sidebar p, .sidebar li {
-            color: #bdc3c7; /* Lighter text for sidebar paragraphs/lists */
-         }
-
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Specific Sections Styling */
-        .contact-info p {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        .contact-info i { /* Basic icon styling */
-             margin-right: 10px;
-             color: #3498db;
-             width: 18px; /* Fixed width for alignment */
-             text-align: center;
-        }
-
-        .skills-section h4 {
-            color: #ecf0f1; /* Skill group title color */
-            font-weight: bold;
-            margin-top: 15px;
-            margin-bottom: 8px;
-        }
-        
-        .skills-section ul li {
-             background-color: #34495e; /* Skill tag background */
-             border-radius: 4px;
-             padding: 4px 10px;
-             margin-bottom: 6px;
-             display: inline-block; /* Make them like tags */
-             margin-right: 6px;
-             font-size: 0.9em;
-             color: #ecf0f1;
-        }
-
-        .experience-item {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee; /* Separator */
-        }
-        .experience-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-             padding-bottom: 0;
-        }
-        
-        .experience-item h3 {
-             margin-top: 0; /* Remove top margin for first element in item */
-             color: #2980b9; /* Job title color */
-        }
-        
-         .experience-item h4 {
-             font-style: italic;
-             margin-top: 2px;
-             margin-bottom: 10px;
-         }
-
-        /* Responsive Design */
-        @media (max-width: 900px) {
-            .resume-container {
-                flex-direction: column;
-                margin: 15px;
-            }
-
-            .sidebar {
-                flex-basis: auto; /* Reset basis */
-                width: 100%;
-            }
-
-            .main-content {
-                 padding: 25px;
-            }
-            
-            h1 {
-                 font-size: 1.8em;
-            }
-            h2 {
-                 font-size: 1.4em;
-            }
-             .main-content h2 {
-                  font-size: 1.5em;
-             }
-        }
-         @media (max-width: 600px) {
-             body { font-size: 15px; }
-              .sidebar, .main-content {
-                  padding: 20px;
-              }
-               h1 { font-size: 1.6em; }
-               h2 { font-size: 1.3em; }
-               .main-content h2 { font-size: 1.4em; }
-               h3 { font-size: 1.1em; }
-         }
-
-        /* Basic icon placeholders (replace with actual icons if needed) */
-        .icon-phone::before { content: '📞'; }
-        .icon-email::before { content: '✉️'; }
-
-    </style>
-    <!-- If using Font Awesome icons, add the link here -->
+    <!-- Judul akan diatur oleh JS -->
+    <title data-translate="resume_page_title">Resume</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Bisa tambahkan link Font Awesome jika ingin icon -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
 </head>
 <body>
+    <div class="language-switcher">
+        <button id="lang-id-btn" data-lang="id">ID</button>
+        <button id="lang-en-btn" data-lang="en">EN</button>
+    </div>
+
     <div class="resume-container">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <h1>Raden Danny Ramadhan, S.Kom</h1>
+            <h1 data-translate="full_name">Raden Danny Ramadhan, S.Kom</h1>
 
             <section class="contact-info">
-                 <h2>Kontak</h2>
-                 <!-- Using simple text icons as placeholders -->
-                <p><i class="icon icon-phone"></i>+62 82113131149</p>
-                <p><i class="icon icon-email"></i><a href="mailto:ynnadr@gmail.com" style="color: #ecf0f1;">ynnadr@gmail.com</a></p>
-                <!-- Add LinkedIn, Portfolio links here if available -->
+                 <h2 data-translate="contact_title">Kontak</h2>
+                 <p><i class="icon icon-phone"></i>+62 82113131149</p>
+                 <p><i class="icon icon-email"></i><a href="mailto:ynnadr@gmail.com" class="sidebar-link">ynnadr@gmail.com</a></p>
+                 <!-- Tambahkan LinkedIn, Portfolio jika ada -->
+                 <!-- <p><i class="icon icon-linkedin"></i><a href="#" class="sidebar-link" data-translate="linkedin_profile">Profil LinkedIn</a></p> -->
             </section>
 
             <section class="skills-section">
-                <h2>Keahlian</h2>
+                <h2 data-translate="skills_title">Keahlian</h2>
 
-                <h4>Manajemen & Strategi</h4>
+                <h4 data-translate="skill_group_management">Manajemen & Strategi</h4>
                 <ul>
-                    <li>Project Management (MS Project, Agile, Waterfall)</li>
-                    <li>Team Leadership</li>
-                    <li>IT Strategic Planning</li>
-                    <li>Budget Management</li>
-                    <li>Change Management (Implementation, Risk)</li>
+                    <li data-translate="skill_pm">Project Management (MS Project, Agile, Waterfall)</li>
+                    <li data-translate="skill_leadership">Team Leadership</li>
+                    <li data-translate="skill_strategic_planning">IT Strategic Planning</li>
+                    <li data-translate="skill_budgeting">Budget Management</li>
+                    <li data-translate="skill_change_mgmt">Change Management (Implementation, Risk)</li>
                 </ul>
 
-                <h4>Keamanan Informasi & Kepatuhan</h4>
+                <h4 data-translate="skill_group_security">Keamanan Informasi & Kepatuhan</h4>
                 <ul>
-                    <li>ISO27001 (Implementation, Audit, Policy)</li>
-                    <li>Risk Assessment</li>
-                    <li>Data Center Security</li>
-                    <li>Security Standards Compliance</li>
-                    <li>Security Audit</li>
+                    <li data-translate="skill_iso27001">ISO27001 (Implementation, Audit, Policy)</li>
+                    <li data-translate="skill_risk_assessment">Risk Assessment</li>
+                    <li data-translate="skill_dc_security">Data Center Security</li>
+                    <li data-translate="skill_compliance">Security Standards Compliance</li>
+                    <li data-translate="skill_security_audit">Security Audit</li>
                 </ul>
 
-                <h4>Kualitas & Proses IT</h4>
+                <h4 data-translate="skill_group_qa">Kualitas & Proses IT</h4>
                 <ul>
-                    <li>IT Quality Assurance</li>
-                    <li>System Testing</li>
-                    <li>Quality Standard Development</li>
-                    <li>Process Improvement</li>
+                    <li data-translate="skill_qa">IT Quality Assurance</li>
+                    <li data-translate="skill_testing">System Testing</li>
+                    <li data-translate="skill_quality_standards">Quality Standard Development</li>
+                    <li data-translate="skill_process_improvement">Process Improvement</li>
                 </ul>
 
-                <h4>Teknis</h4>
+                <h4 data-translate="skill_group_technical">Teknis</h4>
                 <ul>
                     <li>HTML</li><li>PHP</li><li>CSS</li><li>JavaScript</li>
                     <li>MySQL</li><li>MongoDB</li><li>PostgreSQL</li>
-                    <li>Data Center Ops & Planning</li>
-                    <li>SAP ERP (FI/CO, TM)</li>
-                    <li>System & Business Analysis</li>
+                    <li data-translate="skill_dc_ops">Data Center Ops & Planning</li>
+                    <li data-translate="skill_sap">SAP ERP (FI/CO, TM)</li>
+                    <li data-translate="skill_sys_analysis">System & Business Analysis</li>
                     <li>IP-VSAT</li>
                 </ul>
-                 <h4>Soft Skills</h4>
+                 <h4 data-translate="skill_group_soft">Soft Skills</h4>
                  <ul>
-                     <li>Komunikasi</li><li>Kepemimpinan</li>
-                     <li>Pemecahan Masalah</li><li>Analisis</li>
-                     <li>Kerjasama Tim</li>
+                     <li data-translate="skill_communication">Komunikasi</li>
+                     <li data-translate="skill_leadership_soft">Kepemimpinan</li>
+                     <li data-translate="skill_problem_solving">Pemecahan Masalah</li>
+                     <li data-translate="skill_analysis">Analisis</li>
+                     <li data-translate="skill_teamwork">Kerjasama Tim</li>
                  </ul>
             </section>
 
             <section class="education">
-                <h2>Pendidikan Formal</h2>
+                <h2 data-translate="education_title">Pendidikan Formal</h2>
                 <p>
-                    <strong>S1 Manajemen Informatika - Bachelor of Computer Science</strong><br>
-                    STMIK/Universitas Gunadarma<br>
-                    1990 – 1994
+                    <strong data-translate="education_degree">S1 Manajemen Informatika - Bachelor of Computer Science</strong><br>
+                    <span data-translate="education_university">STMIK/Universitas Gunadarma</span><br>
+                    <span data-translate="education_period">1990 – 1994</span>
                 </p>
             </section>
 
             <section class="mentorship">
-                <h2>Aktivitas Profesional & Mentorship</h2>
+                <h2 data-translate="mentorship_title">Aktivitas Profesional & Mentorship</h2>
                  <p>
-                     <strong>Mentor | Gerakan Nasional 1000 Startup Digital</strong><br>
-                     Kementerian Kominfo | 2018 – 2020
+                     <strong data-translate="mentor_role">Mentor</strong> | <span data-translate="mentor_program_1">Gerakan Nasional 1000 Startup Digital</span><br>
+                     <span data-translate="mentor_org_1">Kementerian Kominfo</span> | <span data-translate="mentor_period_1">2018 – 2020</span>
                  </p>
                  <p>
-                     <strong>Mentor | Google StartUp Weekend</strong><br>
-                     Google StartUp | 2019
+                     <strong data-translate="mentor_role">Mentor</strong> | <span data-translate="mentor_program_2">Google StartUp Weekend</span><br>
+                     <span data-translate="mentor_org_2">Google StartUp</span> | <span data-translate="mentor_period_2">2019</span>
                  </p>
             </section>
         </aside>
@@ -306,160 +102,161 @@
         <!-- Main Content -->
         <main class="main-content">
             <section class="summary">
-                <h2>Ringkasan Profesional</h2>
-                <p>
+                <h2 data-translate="summary_title">Ringkasan Profesional</h2>
+                <p data-translate="summary_p1">
                     Profesional IT Senior dengan pengalaman lebih dari 25 tahun dalam memimpin transformasi digital, mengelola proyek kompleks, memastikan kualitas dan keamanan sistem (ISO27001), serta mengelola operasional data center di berbagai industri termasuk perbankan, konstruksi, travel, dan sektor publik.
                 </p>
-                <p>
+                <p data-translate="summary_p2">
                     Terbukti berhasil dalam implementasi ISO27001, mengoptimalkan proses IT, dan memimpin tim. Berkontribusi aktif pada pengembangan ekosistem digital melalui mentoring startup. Memiliki latar belakang pendidikan Informatika yang kuat dan komitmen terhadap pertumbuhan profesional berkelanjutan.
                 </p>
             </section>
 
             <section class="work-experience">
-                <h2>Pengalaman Kerja</h2>
+                <h2 data-translate="experience_title">Pengalaman Kerja</h2>
 
                  <article class="experience-item">
-                    <h3>Web Application Developer (Freelance Project)</h3>
-                    <h4>Tesola Indonesia | 2024 – 2025</h4>
+                    <h3 data-translate="job_title_webdev_freelance1">Web Application Developer (Freelance Project)</h3>
+                    <h4 data-translate="job_company_tesola">Tesola Indonesia | <span data-translate="job_period_tesola">2024 – 2025</span></h4>
                     <ul>
-                        <li>Proyek: Aplikasi Web untuk Sertifikasi Soft Skills Online.</li>
-                        <li>Mengembangkan aplikasi web dari konsep hingga penyelesaian (prototipe) untuk memfasilitasi sertifikasi online, mencakup registrasi, unggah file, sistem penilaian, pembuatan sertifikat, dan integrasi gateway pembayaran.</li>
-                        <li>Status: Prototipe.</li>
-                    </ul>
-                </article>
-                
-                <article class="experience-item">
-                    <h3>Information System Developer (Freelance Project)</h3>
-                    <h4>PAMI Semarang and Salatiga | 2023 – 2024</h4>
-                    <ul>
-                        <li>Proyek: Sistem Informasi Kejuaraan Atletik Nasional.</li>
-                        <li>Merancang dan membangun sistem informasi untuk mendukung penyelenggaraan kejuaraan atletik, meliputi registrasi peserta, penjadwalan, manajemen hasil, dan diseminasi informasi.</li>
+                        <li data-translate="job_desc_tesola_1">Proyek: Aplikasi Web untuk Sertifikasi Soft Skills Online.</li>
+                        <li data-translate="job_desc_tesola_2">Mengembangkan aplikasi web dari konsep hingga penyelesaian (prototipe) untuk memfasilitasi sertifikasi online, mencakup registrasi, unggah file, sistem penilaian, pembuatan sertifikat, dan integrasi gateway pembayaran.</li>
+                        <li data-translate="job_desc_tesola_3">Status: Prototipe.</li>
                     </ul>
                 </article>
 
                 <article class="experience-item">
-                    <h3>IT Manager | Sustainable Business Development Team</h3>
-                    <h4>Asosiasi Pengusaha Konstruksi Indonesia (ASPEKINDO) | 2019 – 2022</h4>
+                    <h3 data-translate="job_title_infosys_dev">Information System Developer (Freelance Project)</h3>
+                    <h4 data-translate="job_company_pami">PAMI Semarang and Salatiga | <span data-translate="job_period_pami">2023 – 2024</span></h4>
                     <ul>
-                        <li>Bertanggung jawab atas perencanaan strategis IT dan manajemen infrastruktur.</li>
-                        <li>Meningkatkan efisiensi operasional tim IT dengan mengimplementasikan sistem baru untuk proses sertifikasi profesi.</li>
+                        <li data-translate="job_desc_pami_1">Proyek: Sistem Informasi Kejuaraan Atletik Nasional.</li>
+                        <li data-translate="job_desc_pami_2">Merancang dan membangun sistem informasi untuk mendukung penyelenggaraan kejuaraan atletik, meliputi registrasi peserta, penjadwalan, manajemen hasil, dan diseminasi informasi.</li>
                     </ul>
                 </article>
 
                 <article class="experience-item">
-                    <h3>ISO27001 Implementation Consultant</h3>
-                    <h4>PT. Sucofindo Prima Internasional Konsultan (SPRINT) | 2018</h4>
+                    <h3 data-translate="job_title_it_manager_aspekindo">IT Manager | Sustainable Business Development Team</h3>
+                    <h4 data-translate="job_company_aspekindo">Asosiasi Pengusaha Konstruksi Indonesia (ASPEKINDO) | <span data-translate="job_period_aspekindo">2019 – 2022</span></h4>
                     <ul>
-                        <li>Klien: Bank Sumsel-Babel, Palembang.</li>
-                        <li>Melakukan analisis kesenjangan, mengembangkan dokumentasi, mengimplementasikan kontrol keamanan, dan melaksanakan audit internal ISO27001.</li>
-                        <li>Berhasil memandu klien meraih sertifikasi ISO27001 dalam waktu 4 bulan.</li>
+                        <li data-translate="job_desc_aspekindo_1">Bertanggung jawab atas perencanaan strategis IT dan manajemen infrastruktur.</li>
+                        <li data-translate="job_desc_aspekindo_2">Meningkatkan efisiensi operasional tim IT dengan mengimplementasikan sistem baru untuk proses sertifikasi profesi.</li>
                     </ul>
                 </article>
 
                 <article class="experience-item">
-                    <h3>Program Manager</h3>
-                    <h4>PT. Indo Corpora Investama | 2017</h4>
+                    <h3 data-translate="job_title_iso_consultant_1">ISO27001 Implementation Consultant</h3>
+                    <h4 data-translate="job_company_sprint">PT. Sucofindo Prima Internasional Konsultan (SPRINT) | <span data-translate="job_period_sprint_1">2018</span></h4>
                     <ul>
-                        <li>Klien: Padicitytour.com.</li>
-                        <li>Merencanakan dan mengelola program pengembangan platform digital, termasuk koordinasi tim lintas fungsi dan manajemen anggaran.</li>
+                        <li data-translate="job_desc_sprint_1_1">Klien: Bank Sumsel-Babel, Palembang.</li>
+                        <li data-translate="job_desc_sprint_1_2">Melakukan analisis kesenjangan, mengembangkan dokumentasi, mengimplementasikan kontrol keamanan, dan melaksanakan audit internal ISO27001.</li>
+                        <li data-translate="job_desc_sprint_1_3">Berhasil memandu klien meraih sertifikasi ISO27001 dalam waktu 4 bulan.</li>
                     </ul>
                 </article>
 
                 <article class="experience-item">
-                    <h3>Chief Operating Officer</h3>
-                    <h4>PT. Jaganti Nusantara Travel | 2016 – 2017</h4>
+                    <h3 data-translate="job_title_program_manager">Program Manager</h3>
+                    <h4 data-translate="job_company_indocorp">PT. Indo Corpora Investama | <span data-translate="job_period_indocorp">2017</span></h4>
                     <ul>
-                        <li>Mengelola keseluruhan operasional perusahaan, mencakup sistem IT, pengembangan produk, layanan pelanggan, dan keuangan.</li>
+                        <li data-translate="job_desc_indocorp_1">Klien: Padicitytour.com.</li>
+                        <li data-translate="job_desc_indocorp_2">Merencanakan dan mengelola program pengembangan platform digital, termasuk koordinasi tim lintas fungsi dan manajemen anggaran.</li>
                     </ul>
                 </article>
 
                 <article class="experience-item">
-                    <h3>ISO27001 Implementation Consultant</h3>
-                    <h4>PT. Sucofindo Prima Internasional Konsultan (SPRINT) | 2016</h4>
+                    <h3 data-translate="job_title_coo">Chief Operating Officer</h3>
+                    <h4 data-translate="job_company_jaganti">PT. Jaganti Nusantara Travel | <span data-translate="job_period_jaganti">2016 – 2017</span></h4>
                     <ul>
-                        <li>Klien: Kementerian Perhubungan - Direktorat Perhubungan Laut.</li>
-                        <li>Melakukan analisis kebutuhan keamanan informasi, mengembangkan kebijakan dan prosedur ISO27001, serta memberikan panduan implementasi.</li>
+                        <li data-translate="job_desc_jaganti_1">Mengelola keseluruhan operasional perusahaan, mencakup sistem IT, pengembangan produk, layanan pelanggan, dan keuangan.</li>
                     </ul>
                 </article>
-                
+
+                <article class="experience-item">
+                    <h3 data-translate="job_title_iso_consultant_2">ISO27001 Implementation Consultant</h3>
+                    <h4 data-translate="job_company_sprint">PT. Sucofindo Prima Internasional Konsultan (SPRINT) | <span data-translate="job_period_sprint_2">2016</span></h4>
+                    <ul>
+                        <li data-translate="job_desc_sprint_2_1">Klien: Kementerian Perhubungan - Direktorat Perhubungan Laut.</li>
+                        <li data-translate="job_desc_sprint_2_2">Melakukan analisis kebutuhan keamanan informasi, mengembangkan kebijakan dan prosedur ISO27001, serta memberikan panduan implementasi.</li>
+                    </ul>
+                </article>
+
                  <article class="experience-item">
-                    <h3>Supervision Consultant | Data Center Development and Migration</h3>
-                    <h4>PT. Global Piranti Solusi | 2015</h4>
+                    <h3 data-translate="job_title_supervision_consultant">Supervision Consultant | Data Center Development and Migration</h3>
+                    <h4 data-translate="job_company_gps">PT. Global Piranti Solusi | <span data-translate="job_period_gps">2015</span></h4>
                     <ul>
-                        <li>Klien: Komisi Pemberantasan Korupsi (KPK), Indonesia.</li>
-                        <li>Mengawasi kualitas konstruksi pusat data baru dan proses migrasi data, memastikan kepatuhan terhadap standar keamanan.</li>
+                        <li data-translate="job_desc_gps_1">Klien: Komisi Pemberantasan Korupsi (KPK), Indonesia.</li>
+                        <li data-translate="job_desc_gps_2">Mengawasi kualitas konstruksi pusat data baru dan proses migrasi data, memastikan kepatuhan terhadap standar keamanan.</li>
                     </ul>
                 </article>
-                
+
                 <article class="experience-item">
-                    <h3>System & Business Analyst</h3>
-                    <h4>PT. Lunar Multindo Infokom | 2014</h4>
+                    <h3 data-translate="job_title_sys_analyst">System & Business Analyst</h3>
+                    <h4 data-translate="job_company_lunar">PT. Lunar Multindo Infokom | <span data-translate="job_period_lunar">2014</span></h4>
                      <ul>
-                        <li>Klien: Kementerian Pekerjaan Umum dan Perumahan Rakyat.</li>
-                        <li>Menganalisis kebutuhan bisnis untuk pengembangan aplikasi web dan mobile respons bencana, menyusun spesifikasi fungsional dan teknis.</li>
+                        <li data-translate="job_desc_lunar_1">Klien: Kementerian Pekerjaan Umum dan Perumahan Rakyat.</li>
+                        <li data-translate="job_desc_lunar_2">Menganalisis kebutuhan bisnis untuk pengembangan aplikasi web dan mobile respons bencana, menyusun spesifikasi fungsional dan teknis.</li>
                     </ul>
                 </article>
-                
-                 <article class="experience-item">
-                    <h3>IT Quality Assurance / Head of IT Change Management</h3>
-                    <h4>Telkom Sigma | 2008 – 2013</h4>
-                     <ul>
-                        <li>Mengembangkan dan mengimplementasikan strategi QA, mengelola proses manajemen perubahan IT untuk memastikan kualitas rilis produk dan layanan IT.</li>
-                        <li>Meningkatkan efektivitas proses QA.</li>
-                    </ul>
-                </article>
-                
-                <!-- ... (Tambahkan sisa pengalaman kerja dengan format yang sama, ringkas jika perlu) ... -->
 
                  <article class="experience-item">
-                    <h3>IT Quality Management / Change Management</h3>
-                    <h4>PT. Lima Pilar Teknologi | 2007 – 2008</h4>
+                    <h3 data-translate="job_title_qa_head">IT Quality Assurance / Head of IT Change Management</h3>
+                    <h4 data-translate="job_company_sigma">Telkom Sigma | <span data-translate="job_period_sigma">2008 – 2013</span></h4>
                      <ul>
-                        <li>Klien: Bank Danamon Indonesia.</li>
-                        <li>Mengimplementasikan proses QA untuk proyek pengembangan sistem perbankan dan mengelola perubahan sistem.</li>
+                        <li data-translate="job_desc_sigma_1">Mengembangkan dan mengimplementasikan strategi QA, mengelola proses manajemen perubahan IT untuk memastikan kualitas rilis produk dan layanan IT.</li>
+                        <li data-translate="job_desc_sigma_2">Meningkatkan efektivitas proses QA.</li>
                     </ul>
                 </article>
-                 
+
                  <article class="experience-item">
-                    <h3>Project Manager</h3>
-                    <h4>PT. Waysase Ciptapadu | 2006 – 2007</h4>
+                    <h3 data-translate="job_title_qm_change">IT Quality Management / Change Management</h3>
+                    <h4 data-translate="job_company_lima_pilar">PT. Lima Pilar Teknologi | <span data-translate="job_period_lima_pilar">2007 – 2008</span></h4>
                      <ul>
-                         <li>Klien: Semen Bosowa Group (Makassar) & Bank Danamon Indonesia (Jakarta).</li>
-                         <li>Merencanakan, melaksanakan, memantau proyek IT, manajemen tim, dan komunikasi klien.</li>
-                         <li>Implementasi SAP ERP (TM, FI/CO) di Bosowa Group.</li>
-                         <li>Implementasi Sistem Manajemen Aset Tetap di Bank Danamon.</li>
+                        <li data-translate="job_desc_lima_pilar_1">Klien: Bank Danamon Indonesia.</li>
+                        <li data-translate="job_desc_lima_pilar_2">Mengimplementasikan proses QA untuk proyek pengembangan sistem perbankan dan mengelola perubahan sistem.</li>
+                    </ul>
+                </article>
+
+                 <article class="experience-item">
+                    <h3 data-translate="job_title_pm_waysase">Project Manager</h3>
+                    <h4 data-translate="job_company_waysase">PT. Waysase Ciptapadu | <span data-translate="job_period_waysase">2006 – 2007</span></h4>
+                     <ul>
+                         <li data-translate="job_desc_waysase_1">Klien: Semen Bosowa Group (Makassar) & Bank Danamon Indonesia (Jakarta).</li>
+                         <li data-translate="job_desc_waysase_2">Merencanakan, melaksanakan, memantau proyek IT, manajemen tim, dan komunikasi klien.</li>
+                         <li data-translate="job_desc_waysase_3">Implementasi SAP ERP (TM, FI/CO) di Bosowa Group.</li>
+                         <li data-translate="job_desc_waysase_4">Implementasi Sistem Manajemen Aset Tetap di Bank Danamon.</li>
                      </ul>
                  </article>
-                 
+
                  <article class="experience-item">
-                    <h3>Project Manager</h3>
-                    <h4>The Urban Institute, Washington (Jakarta Office) | 2004 – 2005</h4>
+                    <h3 data-translate="job_title_pm_urban">Project Manager</h3>
+                    <h4 data-translate="job_company_urban">The Urban Institute, Washington (Jakarta Office) | <span data-translate="job_period_urban">2004 – 2005</span></h4>
                      <ul>
-                         <li>Klien: Yayasan Inovasi Pemerintah Daerah (Jakarta).</li>
-                         <li>Mengelola proyek pengembangan sistem IT untuk pemerintah daerah.</li>
+                         <li data-translate="job_desc_urban_1">Klien: Yayasan Inovasi Pemerintah Daerah (Jakarta).</li>
+                         <li data-translate="job_desc_urban_2">Mengelola proyek pengembangan sistem IT untuk pemerintah daerah.</li>
                      </ul>
                  </article>
-                 
+
                  <article class="experience-item">
-                    <h3>IT Manager</h3>
-                    <h4>PT. Prima Cipta Dinamika | 2002 – 2004</h4>
+                    <h3 data-translate="job_title_it_manager_prima">IT Manager</h3>
+                    <h4 data-translate="job_company_prima">PT. Prima Cipta Dinamika | <span data-translate="job_period_prima">2002 – 2004</span></h4>
                      <ul>
-                         <li>Klien: Pemerintah Kabupaten Morowali, Sulawesi Tengah.</li>
-                         <li>Mengelola infrastruktur dan operasional IT pemerintah daerah.</li>
-                         <li>Implementasi akses internet IP-VSAT.</li>
+                         <li data-translate="job_desc_prima_1">Klien: Pemerintah Kabupaten Morowali, Sulawesi Tengah.</li>
+                         <li data-translate="job_desc_prima_2">Mengelola infrastruktur dan operasional IT pemerintah daerah.</li>
+                         <li data-translate="job_desc_prima_3">Implementasi akses internet IP-VSAT.</li>
                      </ul>
                  </article>
-                 
+
                  <article class="experience-item">
-                    <h3>IT Manager</h3>
-                    <h4>PT. Cita Matriks Semesta | 1996 – 2002</h4>
+                    <h3 data-translate="job_title_it_manager_cita">IT Manager</h3>
+                    <h4 data-translate="job_company_cita">PT. Cita Matriks Semesta | <span data-translate="job_period_cita">1996 – 2002</span></h4>
                      <ul>
-                         <li>Mengelola sistem IT perusahaan, dukungan teknis, dan pengembangan aplikasi internal.</li>
+                         <li data-translate="job_desc_cita_1">Mengelola sistem IT perusahaan, dukungan teknis, dan pengembangan aplikasi internal.</li>
                      </ul>
                  </article>
 
             </section>
         </main>
     </div>
+
+    <!-- Load JavaScript -->
+    <script src="js/script.js"></script>
 </body>
 </html>
