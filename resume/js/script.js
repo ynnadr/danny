@@ -1,6 +1,7 @@
 /**
  * File: js/script.js
  * Handles language switching and client-side PDF generation for the resume page.
+ * Includes functionality to force desktop layout in PDF and place a resized QR code.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -42,13 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
      * Memperbarui konten teks elemen HTML berdasarkan data bahasa saat ini.
      */
     function updateTextElements() {
-        if (!currentLangData) {
-            console.error("Cannot update text elements: Language data not loaded.");
+        if (!currentLangData || Object.keys(currentLangData).length === 0) {
+            // Jangan update jika data belum ada atau kosong, tunggu loadLanguage selesai
+            // console.warn("Skipping text update: Language data not ready.");
             return;
         }
         translatableElements.forEach(element => {
             const key = element.getAttribute('data-translate');
-            if (key && currentLangData[key]) {
+            if (key && currentLangData[key] !== undefined) { // Cek key ada dan punya nilai (bisa string kosong)
                 // Handle <title> tag
                 if (element.tagName === 'TITLE') {
                     document.title = currentLangData[key];
@@ -62,14 +64,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     element.textContent = currentLangData[key];
                 }
             } else if (key) {
-                // console.warn(`Translation key "${key}" not found in current language file.`); // Opsional: log jika key hilang
+                // console.warn(`Translation key "${key}" not found or value is missing in current language file.`); // Opsional: log jika key hilang
             }
         });
-        // Update teks tombol generate PDF secara eksplisit jika belum tertangani
-        const downloadBtnSpan = generatePdfBtn?.querySelector('span[data-translate="download_pdf_button"]');
-        if (downloadBtnSpan && currentLangData.download_pdf_button) {
-            downloadBtnSpan.textContent = currentLangData.download_pdf_button;
-        }
+         // Update teks tombol generate PDF secara eksplisit jika belum tertangani ATAU saat bahasa berubah
+         const downloadBtn = document.getElementById('generate-pdf-btn'); // Tombol/Link download
+         const downloadBtnSpan = downloadBtn?.querySelector('span[data-translate="download_pdf_button"]');
+         const downloadBtnTextKey = "download_pdf_button";
+         if (downloadBtnSpan && currentLangData[downloadBtnTextKey] !== undefined) {
+             // Pastikan tombol tidak sedang dalam state 'Generating...'
+             if (!downloadBtn.hasAttribute('data-generating')) {
+                 downloadBtnSpan.textContent = currentLangData[downloadBtnTextKey];
+             }
+         }
     }
 
 
@@ -104,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Muat bahasa yang tersimpan atau default ke 'id' saat halaman dimuat
     const preferredLang = localStorage.getItem('preferredLang') || 'id';
+    // Panggil loadLanguage di awal. updateTextElements akan dipanggil di dalamnya.
     loadLanguage(preferredLang);
     // --- Akhir Bagian Terjemahan ---
 
@@ -118,15 +126,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const DESKTOP_WIDTH_PX = 1200; // Target lebar render (sesuaikan dengan max-width .resume-container)
     const SIDEBAR_WIDTH_RATIO = 0.33; // Proporsi lebar sidebar (sesuaikan dengan CSS)
     const PDF_MARGIN_INCHES = 0.5; // Margin di semua sisi PDF (inci)
-    const QR_WIDTH_INCHES = 0.9; // Lebar QR code di PDF (inci)
-    const QR_HEIGHT_INCHES = 0.9; // Tinggi QR code di PDF (inci)
+    // Ukuran target QR code di PDF (inci) - Sesuaikan nilai ini jika perlu
+    const QR_WIDTH_INCHES = 1.5; // Lebih besar
+    const QR_HEIGHT_INCHES = 1.5; // Jaga tetap sama agar square
 
     // Pastikan semua elemen yang diperlukan ada sebelum menambahkan event listener
     if (generatePdfBtn && elementToCapture && qrImageElement && downloadLinkContainer) {
 
         generatePdfBtn.addEventListener('click', (event) => {
             event.preventDefault(); // Mencegah aksi default (penting jika tombolnya adalah link <a>)
+            // Cek jika proses sudah berjalan
+            if (generatePdfBtn.hasAttribute('data-generating')) {
+                console.log("PDF generation already in progress.");
+                return;
+            }
             console.log("Generate PDF process started...");
+            generatePdfBtn.setAttribute('data-generating', 'true'); // Tandai proses berjalan
 
             // Ambil teks tombol saat ini untuk dikembalikan nanti
             const originalButtonTextSpan = generatePdfBtn.querySelector('span[data-translate="download_pdf_button"]');
@@ -151,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 html2canvas: {
                     scale: 2, // Meningkatkan resolusi rendering
                     useCORS: true, // Perlu jika ada gambar dari domain lain di resume
-                    logging: false, // Set true untuk debug html2canvas
+                    logging: false, // Set true untuk melihat log debug html2canvas
                     width: DESKTOP_WIDTH_PX, // Paksa lebar render
                     windowWidth: DESKTOP_WIDTH_PX, // Simulasikan window lebar
                     // Fungsi yang dijalankan pada elemen DOM kloningan sebelum render
@@ -179,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
                 },
+                // Konfigurasi jsPDF
                 jsPDF: {
                     unit: 'in', // Satuan: inci
                     format: 'a4', // Ukuran kertas
@@ -191,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
             html2canvas(elementToCapture, options.html2canvas).then(canvas => {
                 console.log("html2canvas finished. Generating PDF pages...");
                 const imgData = canvas.toDataURL(options.image.type, options.image.quality); // Dapatkan data gambar
-                const pdf = new jspdf.jsPDF(options.jsPDF); // Inisialisasi objek PDF
+                const pdf = new jspdf.jsPDF(options.jsPDF); // Buat instance jsPDF
 
                 // Dapatkan dimensi halaman PDF dan area konten
                 const pdfPageWidth = pdf.internal.pageSize.getWidth();
@@ -235,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Hitung lebar virtual sidebar di PDF
                 const sidebarWidthPdf = contentWidthPdf * SIDEBAR_WIDTH_RATIO;
                 // Hitung posisi X (horizontal) agar QR code center di area sidebar kiri
+                // Gunakan QR_WIDTH_INCHES yang baru
                 const desiredQrX = contentMargin + (sidebarWidthPdf / 2) - (QR_WIDTH_INCHES / 2);
 
                 // Tentukan halaman target dan Posisi Y berdasarkan jumlah halaman
@@ -247,6 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Fallback: Jika hanya 1 halaman, letakkan di dekat bawah halaman 1
                     qrTargetPage = 1;
                     const bottomPadding = 0.8; // Jarak dari batas margin bawah (sesuaikan jika perlu)
+                    // Gunakan QR_HEIGHT_INCHES yang baru untuk perhitungan fallback Y
                     desiredQrY = pdfPageHeight - QR_HEIGHT_INCHES - contentMargin - bottomPadding;
                     console.log(`QR Code target: Page ${qrTargetPage} (Fallback). Calculated Y (near bottom): ${desiredQrY.toFixed(2)}in`);
                 }
@@ -255,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 pdf.setPage(qrTargetPage); // Pindah ke halaman target
 
                 try {
-                    // Deteksi tipe gambar QR code dari ekstensi file
+                    // Coba deteksi tipe gambar QR dari src (harapannya PNG atau JPG/JPEG)
                     let qrImageType = 'PNG'; // Default ke PNG
                     const qrSrcLower = qrImageElement.src.toLowerCase();
                     if (qrSrcLower.endsWith('.jpg') || qrSrcLower.endsWith('.jpeg')) {
@@ -264,8 +282,8 @@ document.addEventListener('DOMContentLoaded', () => {
                          console.warn("QR Code image source is not ending with .png, .jpg, or .jpeg. Assuming PNG.");
                     }
 
-                    console.log(`Attempting to add QR Image (${qrImageType}) at X:${desiredQrX.toFixed(2)}, Y:${desiredQrY.toFixed(2)}`);
-                    // Tambahkan gambar QR code ke PDF
+                    console.log(`Attempting to add QR Image (${qrImageType}) at X:${desiredQrX.toFixed(2)}, Y:${desiredQrY.toFixed(2)} with size ${QR_WIDTH_INCHES}x${QR_HEIGHT_INCHES}in`);
+                    // Tambahkan gambar QR code ke PDF dengan ukuran yang sudah ditentukan
                     pdf.addImage(qrImageElement, qrImageType, desiredQrX, desiredQrY, QR_WIDTH_INCHES, QR_HEIGHT_INCHES);
                     console.log("QR Code added successfully.");
                 } catch (e) {
@@ -290,9 +308,10 @@ document.addEventListener('DOMContentLoaded', () => {
                  }
                  generatePdfBtn.style.pointerEvents = 'auto'; // Aktifkan kembali klik
                  generatePdfBtn.style.opacity = '1'; // Kembalikan opasitas normal
+                 generatePdfBtn.removeAttribute('data-generating'); // Hapus flag proses berjalan
                  console.log("PDF generation process finished.");
             });
-        });
+        }); // Akhir event listener klik
     } else {
         // Log peringatan jika elemen penting tidak ditemukan saat halaman dimuat
         console.warn("One or more elements required for PDF generation were not found on the page. PDF generation functionality disabled. Check IDs: generate-pdf-btn, qrCodeForPdf, download-pdf-link-container and class: resume-container.");
@@ -301,6 +320,8 @@ document.addEventListener('DOMContentLoaded', () => {
             generatePdfBtn.style.pointerEvents = 'none';
             generatePdfBtn.style.opacity = '0.5';
             generatePdfBtn.title = "PDF generation disabled due to missing elements.";
+             const btnSpan = generatePdfBtn.querySelector('span');
+             if(btnSpan) btnSpan.textContent = "PDF Disabled";
         }
     }
 
