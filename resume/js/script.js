@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentPage >= 2) {
                     qrTargetPage = 2; // Targetkan halaman 2 jika ada
                     // Posisi Y: Margin atas + 1/4 tinggi area konten halaman
-                    desiredQrY = contentMargin + (usablePageHeight / 4);
+                    desiredQrY = contentMargin + (usablePageHeight / 6);
                     console.log(`QR Code target: Page ${qrTargetPage}. Calculated Y (1/4 down page 2): ${desiredQrY.toFixed(2)}in`);
                 } else {
                     // Fallback: Jika hanya 1 halaman, letakkan di dekat bawah halaman 1
