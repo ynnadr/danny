@@ -283,3 +283,38 @@ a:hover {
 .icon-email::before { content: '✉️'; /* Or use font awesome class */ }
 .icon-linkedin::before { content: '🔗'; /* Or use font awesome class */ }
 
+/* Footer styling - Hidden by default */
+.mobile-footer {
+    display: none; /* Hide on desktop */
+    padding: 20px;
+    text-align: center;
+    background-color: #2c3e50; /* Match sidebar */
+    color: #bdc3c7;
+    margin-top: 20px; /* Space above footer */
+    border-top: 3px solid #3498db; /* Accent line */
+}
+
+.mobile-footer p {
+    margin-bottom: 8px;
+    color: #ecf0f1; /* Lighter text */
+}
+
+.mobile-footer a {
+    color: #ecf0f1;
+    text-decoration: underline;
+}
+ .mobile-footer a:hover {
+    color: #3498db;
+ }
+
+ .mobile-footer i { /* Style icons if used */
+    margin-right: 8px;
+    color: #3498db;
+ }
+
+/* Show footer only on smaller screens (adjust max-width as needed) */
+@media (max-width: 900px) { /* Same breakpoint where layout stacks */
+    .mobile-footer {
+        display: block;
+    }
+}
